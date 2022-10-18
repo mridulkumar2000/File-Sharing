@@ -20,9 +20,9 @@
           <%= link_to current_user.full_name, '/profile'  %>
           <%= link_to "Log out", logout_path, method: "delete" %>
         <% else %> 
-           <%= link_to "Login", 'login' %>
+           <%= link_to "Login", 'login', :style => 'text-decoration:none;' %>
            &nbsp;
-           <%= link_to "Sign Up", 'signup' %>
+           <%= link_to "Sign Up", 'signup', :style => 'text-decoration:none;' %>
         <% end %> 
       </div>
     </nav>
