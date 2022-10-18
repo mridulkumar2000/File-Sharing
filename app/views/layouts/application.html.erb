@@ -17,8 +17,9 @@
       <% end %>
       <div class="navbar-right">
         <% if current_user %> 
-          <%= link_to current_user.full_name, '/profile'  %>
-          <%= link_to "Log out", logout_path, method: "delete" %>
+          <%= link_to current_user.full_name, '/profile', :style => 'text-decoration:none; color:black;'   %>
+          &nbsp;
+          <%= link_to "Log out", logout_path, method: "delete", :style => 'text-decoration:none;'  %>
         <% else %> 
            <%= link_to "Login", 'login', :style => 'text-decoration:none;' %>
            &nbsp;
