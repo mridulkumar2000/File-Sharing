@@ -16,7 +16,7 @@
         <div>
             <%= form_for(:documents, url: 'create_document', method: 'post') do |f| %>
                 <%= f.label :file %> Upload
-                <%= f.file_field :file%>
+                <%= f.file_field :file , onchange: "this.form.submit();"%>
             <% end %>
         </div>
     </div>
