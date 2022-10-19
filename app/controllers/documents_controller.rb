@@ -1,4 +1,4 @@
-class FilesController < ApplicationController
+class DocumentsController < ApplicationController
     before_action :require_user, except: [:show]
 
     def index 
@@ -7,6 +7,11 @@ class FilesController < ApplicationController
 
     def create
         
+    end
+
+    private
+    def create_file_params
+        params.require(:document).permit(:file)
     end
 
 end

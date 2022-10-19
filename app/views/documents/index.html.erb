@@ -1,0 +1,25 @@
+<div style="margin: 16px;">
+    <div style="display:flex; justify-content: space-between;">
+        <div style="display:flex;">
+            <h2> File Dashboard - &nbsp;</h2>
+            <% if @documents && @documents.any? %>
+                <% if @documents.count == 1%>
+                    <h2> 1 File </h2>
+                <% else %>
+                    <h2><% @documents.count %> Files</h2>
+                <% end%>
+            <% else %>
+               <h2>  No Files Found </h2>
+            <% end %>
+        </div>
+
+        <div>
+            <%= form_for(:documents, url: 'create_document', method: 'post') do |f| %>
+                <%= f.label :file %> Upload
+                <%= f.file_field :file%>
+            <% end %>
+        </div>
+    </div>
+
+    
+</div>
