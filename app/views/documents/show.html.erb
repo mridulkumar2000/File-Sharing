@@ -1,4 +1,4 @@
-    <div class="container">
+    <div style="margin: 16px;">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
@@ -20,16 +20,14 @@
                             <th>Name</th>
                             <th>Upload Date</th>
                             <th>Size</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><%= @document.user_document.filename %></td>
-                            <td><%= @document.user_document.created_at.strftime("%-d %b %Y %H:%M") %></td>
-                            <td><%= file_size_verbose @document.user_document.byte_size %></td>
+                            <td><%= @document.file.record.filename %></td>
+                            <td><%= @document.file.record.created_at.strftime("%-d %b %Y %H:%M") %></td>
                             <td>
-                                <%= link_to 'Download', @document.user_document, download: '' %>
+                                <%= link_to 'Download', @document.file, download: '' %>
                             </td>
                         </tr>     
                     </tbody>

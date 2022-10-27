@@ -13,6 +13,11 @@ class DocumentsController < ApplicationController
         redirect_to root_path
     end
 
+    def show
+        @document = Document.find_by!(key: params[:id], shared: true)
+        @user = User.find(@document[:user_id]) if @document
+    end
+
     def destroy
         @document = current_user.documents.find_by!(key: params[:id])
         @document && @document.file.purge_later

@@ -35,7 +35,7 @@
                                <% if document.file.attached? %>
                                  <tr>
                                     <td><%= document.file.record.filename %></td>
-                                    <td><%= document.file.record.created_at.strftime("%F %T") %></td>
+                                    <td><%= document.file.record.created_at.strftime("%-d %b %Y %H:%M") %></td>
                                     <td>
                                         <%= link_to 'Download', document.file, download: '' %> |&nbsp;
                                         <%= link_to "Delete", document_path(document.key),
@@ -43,7 +43,7 @@
                                             method: :delete %>
                                     </td>
                                     <td>
-                                        <div>
+                                        <div style="display:flex;">
                                             <%= form_for(:document, url: document_path(document.key), 
                                                 method: 'patch') do |f| %>
                                                 <div class="custom-control custom-switch">
@@ -54,9 +54,11 @@
                                                         for="share-<%= document.key %>"></label>
                                                 </div>
                                             <% end %>
-                                            <% if document.shared %>
-                                                <%= link_to "Link", document_path(document.key), target: :_blank %>
-                                        <% end %>
+                                           <div>
+                                                <% if document.shared %>
+                                                    <%= link_to "Link", document_path(document.key), target: :_blank %>
+                                                <% end %>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>
