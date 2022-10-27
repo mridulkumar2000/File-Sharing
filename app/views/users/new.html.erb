@@ -4,48 +4,28 @@
 		<h2>Sign Up</h2>
 		<hr>
         <div class="form-group">
-            <%= f.label :user_name, 'Username', class: "#{'text-danger' if @user.errors[:user_name].any?}" %>
-            <%= f.text_field :user_name, class: "form-control #{'is-invalid' if @user.errors[:user_name].any?}", 
-                required: true, maxlength: 15 %>
-            <% if @user.errors[:user_name].any? %>
-                <small class="text-danger">
-                    <%= @user.errors[:user_name][0] %>
-                </small> 
-            <% end %>  
+            <%= f.label :user_name, 'Username' %>
+            <%= f.text_field :user_name, class: "form-control", 
+                required: true, maxlength: 15 %>  
         </div>
         <div class="form-group">
-            <%= f.label :full_name, 'Full Name', class: "#{'text-danger' if @user.errors[:full_name].any?}" %>
-            <%= f.text_field :full_name, class: "form-control #{'is-invalid' if @user.errors[:full_name].any?}", 
+            <%= f.label :full_name, 'Full Name' %>
+            <%= f.text_field :full_name, class: "form-control", 
                 required: true %>
-            <% if @user.errors[:full_name].any? %>
-                <small class="text-danger">
-                    <%= @user.errors[:full_name][0] %>
-                </small> 
-            <% end %>
         </div>
         <div class="form-group">
-            <%= f.label :email, 'Email Address', class: "#{'text-danger' if @user.errors[:email].any?}" %>
-            <%= f.email_field :email, class: "form-control #{'is-invalid' if @user.errors[:email].any?}", 
+            <%= f.label :email, 'Email Address' %>
+            <%= f.email_field :email, class: "form-control", 
                 required: true %>
-            <% if @user.errors[:email].any? %>
-                <small class="text-danger">
-                    <%= @user.errors[:email][0] %>
-                </small> 
-            <% end %>
         </div>
 		<div class="form-group">
-            <%= f.label :password, 'Password', class: "#{'text-danger' if @user.errors[:password].any?}" %>
+            <%= f.label :password, 'Password' %>
             <%= f.password_field :password, 
-                class: "form-control #{'is-invalid' if @user.errors[:password].any?}", 
+                class: "form-control", 
                 required: true, minlength: 8, maxlength: 15,
                 pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*',
                 title: 'Password must contain atleast one uppercase, lowercase and number'
             %>
-            <% if @user.errors[:password].any? %>
-                <small class="text-danger">
-                    <%= @user.errors[:password][0] %>
-                </small> 
-            <% end %>
         </div>
 		<div class="form-group">
             <%= f.submit "Create Account", class: 'btn btn-primary btn-block' %>

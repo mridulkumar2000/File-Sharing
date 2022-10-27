@@ -12,9 +12,7 @@ class SessionsController < ApplicationController
         if @params 
             user_name = @params[:user_name]
             @user = User.find_by(user_name: user_name) if user_name
-
             if @user && @user.authenticate(@params[:password])
-    
                 session[:user_id] = @user.id
                 redirect_to '/'
             else

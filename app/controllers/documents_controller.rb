@@ -1,4 +1,3 @@
-require 'securerandom'
 
 class DocumentsController < ApplicationController
     before_action :require_user, except: [:show]
@@ -14,7 +13,7 @@ class DocumentsController < ApplicationController
 
     private
     def create_file_params
-        params.permit(:file).merge(key: "#{SecureRandom.hex(6)}#{Time.now.to_i}")
+        params.permit(:file).merge(key: "#{Time.now.to_i}")
     end
 
 end
