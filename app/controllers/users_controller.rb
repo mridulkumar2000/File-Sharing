@@ -29,7 +29,6 @@ class UsersController < ApplicationController
     def update
         @user = User.find(session[:user_id])
         if @user.update(user_params)
-            byebug
             @profile_updated = true
             render :show
         else

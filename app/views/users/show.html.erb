@@ -12,14 +12,14 @@
                 <input type="text" class="form-control" disabled value="<%= @user.email %>">
             </div>
             <div class="form-group">
-                <%= link_to '/profile/edit' do %>
+                <%= link_to '/profile/edit', :style => 'text-decoration:none;' do %>
                     <button class="btn btn-primary btn-block">
                         Edit Profile
                     </button>
                 <% end %>
             </div>
             <% if @profile_updated %> 
-                <div class="form-message">
+                <div>
                     <small class="text-success">Profile updated successfully!</small>
                 </div>
             <% end %>
