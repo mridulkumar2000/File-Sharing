@@ -29,6 +29,7 @@ class UsersController < ApplicationController
     def update
         @user = User.find(session[:user_id])
         if @user.update(user_params)
+            byebug
             @profile_updated = true
             render :show
         else
@@ -38,7 +39,7 @@ class UsersController < ApplicationController
  
     private
     def user_params
-        params.permit(:user_name, :full_name, :email, :password)
+        params.require(:user).permit(:user_name, :full_name, :email, :password)
     end
 
 end
