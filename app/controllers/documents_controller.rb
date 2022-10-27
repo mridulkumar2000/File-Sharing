@@ -20,6 +20,13 @@ class DocumentsController < ApplicationController
         redirect_to root_path
     end
 
+    def update
+        @checked = (params[:document] && (params[:document][:shared] == '1')) ? true : false
+        @document = current_user.documents.find_by!(key: params[:id])
+        @document && @document.update(shared: @checked) 
+        redirect_to root_path
+    end
+
     private
     def file_params
         params.require(:document).permit(:file).merge(key: "#{Time.now.to_i}")
