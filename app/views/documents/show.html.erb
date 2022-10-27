@@ -5,7 +5,7 @@
                     <div class="col-sm-8">
                         <h2>
                             <% if @user %>
-                                Shared file from <b><%= @user.full_name %></b>
+                                Shared file from <b><%= @user.full_name %></b> (<b><%= @user.user_name%></b>)
                             <% else %>
                                 File not available
                             <% end %>
