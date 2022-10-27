@@ -26,7 +26,6 @@
                         <tr>
                             <th>Name</th>
                             <th>Upload Date</th>
-                            <th>Size</th>
                             <th>Actions</th>
                             <th>Sharing</th>
                         </tr>
@@ -36,7 +35,7 @@
                                <% if document.file.attached? %>
                                  <tr>
                                     <td><%= document.file.record.filename %></td>
-                                    <td><%= document.file.record.created_at.strftime("%-d %b %Y %H:%M") %></td>
+                                    <td><%= document.file.record.created_at.strftime("%F %T") %></td>
                                     <td>
                                         <%= link_to 'Download', document.file, download: '' %> |&nbsp;
                                         <%= link_to "Delete", document_path(document.key),
