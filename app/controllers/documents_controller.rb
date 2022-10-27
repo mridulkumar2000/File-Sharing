@@ -7,13 +7,15 @@ class DocumentsController < ApplicationController
     end
 
     def create
-        current_user.documents.create(create_file_params)
+        file_to_upload = current_user.documents.create(file_params)
+        file_to_upload.filename = file_params["file"].original_filename
+        file_to_upload.save
         redirect_to root_path
     end
 
     private
-    def create_file_params
-        params.permit(:file).merge(key: "#{Time.now.to_i}")
+    def file_params
+        params.require(:document).permit(:file).merge(key: "#{Time.now.to_i}")
     end
 
 end

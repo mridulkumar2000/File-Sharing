@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'documents#index'
-
+  
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
   get '/profile' => 'users#show', :as => :user 
@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
-  post '/create_document' => 'documents#create'
+  resources :documents, except: [:new, :edit]
   
 end

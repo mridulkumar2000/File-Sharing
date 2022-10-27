@@ -14,7 +14,7 @@
         </div>
 
         <div>
-            <%= form_for(:documents, url: 'create_document', method: 'post') do |f| %>
+            <%= form_for(:document, url: documents_path, method: 'post') do |f| %>
                 <%= f.label :file %> Upload
                 <%= f.file_field :file , onchange: "this.form.submit();"%>
             <% end %>
@@ -33,11 +33,10 @@
                     </thead>
                     <tbody>
                         <% @documents.each do |document| %>
-                            <% if document.file.attached? %>
-                                <tr>
-                                    <td><%= document.file.filename %></td>
-                                    <td><%= document.file.created_at.strftime("%-d %b %Y %H:%M") %></td>
-                                    <td><%= file_size_verbose document.file.byte_size %></td>
+                               <% if document.file.attached? %>
+                                 <tr>
+                                    <td><%= document.file.record.filename %></td>
+                                    <td><%= document.file.record.created_at.strftime("%-d %b %Y %H:%M") %></td>
                                     <td>
                                         <%= link_to 'Download', document.file, download: '' %> |&nbsp;
                                         <%= link_to "Delete", document_path(document.key),
@@ -62,7 +61,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                            <% end %>
+                               <% end %>
                         <% end %>
                     </tbody>
                 </table>
