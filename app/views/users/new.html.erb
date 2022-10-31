@@ -16,7 +16,10 @@
         <div class="form-group">
             <%= f.label :email, 'Email Address' %>
             <%= f.email_field :email, class: "form-control", 
-                required: true %>
+                required: true, 
+                pattern: "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$" ,
+                title: 'Please enter valid email'
+            %>
         </div>
 		<div class="form-group">
             <%= f.label :password, 'Password' %>
