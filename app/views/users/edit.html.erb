@@ -10,9 +10,15 @@
             <div class="form-group">
                 <%= f.label :email, 'Email Address' %>
                 <%= f.email_field :email, 
-                        required: true, 
-                        pattern: "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$" ,
-                        title: 'Please enter valid email' %> 
+                    required: true, 
+                    pattern: "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$" ,
+                    title: 'Please enter valid email' 
+                %> 
+                <% if @is_user_email_present %>
+                    <div class="form-message">
+                    <small class="text-danger">Email already exists</small>
+                    </div>
+                <% end %> 
             </div>
             <div class="form-group">
                 <%= f.submit "Save", class: 'btn btn-primary btn-block' %>
