@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FileSharing101</title>
+    <title>File Share</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,7 +10,23 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="background-color:#87cefa;">
+    <nav class="navbar navbar-light bg-light">
+      <%= link_to(root_path) do %>
+        <b class="navbar-brand">File Sharing 101</b>
+      <% end %>
+      <div class="navbar-right">
+        <% if current_user %> 
+          <%= link_to current_user.full_name, '/profile', :style => 'text-decoration:none; color:black;'   %>
+          &nbsp;
+          <%= link_to "Log out", logout_path, method: "delete", :style => 'text-decoration:none;'  %>
+        <% else %> 
+           <%= link_to "Login", 'login', :style => 'text-decoration:none;' %>
+           &nbsp;
+           <%= link_to "Sign Up", 'signup', :style => 'text-decoration:none;' %>
+        <% end %> 
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>

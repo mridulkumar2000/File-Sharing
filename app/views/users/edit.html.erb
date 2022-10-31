@@ -1,0 +1,30 @@
+<div style="display:flex; align-items:center;justify-content:center;">
+    <div class="card" style="width: 24rem; padding: 1rem; margin-top: 2rem; border-radius: 8px;">
+        <%= form_for(@user, url: user_path, method: 'patch') do |f| %>
+            <h2>Edit Profile - <%= @user.user_name %></h2>
+            <hr>
+            <div class="form-group">
+                <%= f.label :full_name, 'Full Name' %>
+                <%= f.text_field :full_name, required: true %>
+            </div>
+            <div class="form-group">
+                <%= f.label :email, 'Email Address' %>
+                <%= f.email_field :email, 
+                    required: true, 
+                    pattern: "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$" ,
+                    title: 'Please enter valid email' 
+                %> 
+                <% if @is_user_email_present %>
+                    <div class="form-message">
+                    <small class="text-danger">Email already exists</small>
+                    </div>
+                <% end %> 
+            </div>
+            <div class="form-group">
+                <%= f.submit "Save", class: 'btn btn-primary btn-block' %>
+            </div>
+        <% end %>
+    </div>
+
+</div>
+
