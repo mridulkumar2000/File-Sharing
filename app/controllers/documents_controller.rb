@@ -14,7 +14,7 @@ class DocumentsController < ApplicationController
     end
 
     def show
-        @document = Document.find_by!(key: params[:id], shared: true)
+        @document = Document.find_by(key: params[:id], shared: true)
         @user = User.find(@document[:user_id]) if @document
     end
 
